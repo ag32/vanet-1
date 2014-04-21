@@ -1,0 +1,2 @@
+#!/bin/sh
+opp_run -l${INETHOME}/out/gcc-debug/src/inet -n"${INETHOME}/src;.." "$@"

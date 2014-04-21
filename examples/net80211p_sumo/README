@@ -1,0 +1,8 @@
+Veins tutorial example.
+
+1. Run "./buid.sh" to create the Makefile
+2. Run "make" to create the executable.a
+3. On another xterm invoke "sumo-launchd.py -vv". 
+   This starts sumo-launchd which listens for connections on a TCP socket.
+4. Run "./run" to run the sim.
+
