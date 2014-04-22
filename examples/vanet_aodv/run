@@ -1,0 +1,2 @@
+#!/bin/sh
+opp_run -l${VEINSHOME}/src/base/miximbase -l${VEINSHOME}/src/modules/miximmodules -l${INETHOME}/out/gcc-debug/src/inet -n"${VEINSHOME}/src/base;${VEINSHOME}/src/modules;${INETHOME}/src;.." "$@"

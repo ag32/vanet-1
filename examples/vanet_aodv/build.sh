@@ -1,0 +1,3 @@
+#!/bin/sh
+opp_makemake -f -o vanet_aodv -O out -L${VEINSHOME}/out/gcc-debug/src/base -L${VEINSHOME}/out/gcc-debug/src/modules -lmiximbase -lmiximmodules -L${INETHOME}/out/gcc-debug/src -linet
+make
