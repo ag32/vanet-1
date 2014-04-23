@@ -21,6 +21,7 @@
 package edu.ncsu.vanet.manet_dsr;
 
 import org.mixim.base.modules.*;
+import inet.networklayer.autorouting.ipv4.IPv4NetworkConfigurator;
 
 module Car
 {
@@ -43,6 +44,14 @@ module Car
             parameters:
                 @display("p=60,50;i=app");
         }
+
+	//Added IPV4
+        configurator: IPv4NetworkConfigurator {
+            parameters:
+                config=xml("<config><interface hosts='*' address='145.236.x.x' netmask='255.255.0.0'/></config>");
+                @display("p=140,50;i=block/cogwheel_s");
+        }
+
         net: <netwType> like IBaseNetwLayer {
             parameters:
                 @display("p=60,108;i=block/layer");
