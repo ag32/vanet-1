@@ -1,2 +1,6 @@
 out/
+results/
 *~
+*.swp
+*.swo
+.tkenvrc
