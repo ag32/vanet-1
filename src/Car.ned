@@ -15,7 +15,6 @@
 
 package vanet1;
 import inet.base.NotificationBoard;
-import inet.networklayer.autorouting.ipv4.HostAutoConfigurator;
 import inet.networklayer.common.InterfaceTable;
 import inet.mobility.models.TraCIMobility;
 import inet.networklayer.ipv4.RoutingTable;
@@ -23,6 +22,8 @@ import inet.nodes.inet.NetworkLayer;
 import inet.linklayer.ieee80211.Ieee80211Nic;
 import inet.networklayer.IManetRouting;
 import inet.applications.IPingApp;
+import inet.networklayer.autorouting.ipv4.HostAutoConfigurator;
+import inet.linklayer.loopback.LoopbackInterface;
 
 module Car
 {
@@ -38,9 +39,11 @@ module Car
             parameters:
                 @display("p=140,462");
         }
-        ac_wlan: HostAutoConfigurator {
+        
+        configurator: HostAutoConfigurator {
             @display("p=296,402");
         }
+        
         interfaceTable: InterfaceTable {
             parameters:
                 @display("p=140,326");
@@ -81,13 +84,19 @@ module Car
             parameters:
                 @display("p=635,141,row,60");
         }
+        lo0: LoopbackInterface {
+            @display("p=78,406");
+        }
     connections allowunconnected:
        	for i=0..numPingApps-1 {
             networkLayer.pingOut++ --> pingApp[i].pingIn;
             networkLayer.pingIn++ <-- pingApp[i].pingOut;
         }
-        wlan.upperLayerOut --> networkLayer.ifIn[0];
-        wlan.upperLayerIn <-- networkLayer.ifOut[0];
+        
+        wlan.upperLayerOut --> networkLayer.ifIn++;
+        wlan.upperLayerIn <-- networkLayer.ifOut++;
+        networkLayer.ifOut++ --> lo0.upperLayerIn;
+        lo0.upperLayerOut --> networkLayer.ifIn++;
         
  		networkLayer.manetOut --> manetrouting.from_ip if routingProtocol != "";
         networkLayer.manetIn <-- manetrouting.to_ip if routingProtocol != "";

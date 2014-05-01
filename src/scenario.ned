@@ -14,14 +14,10 @@
 // 
 
 package vanet1;
-import inet.networklayer.autorouting.ipv4.IPv4NetworkConfigurator;
+
 
 network scenario extends Highway
 {
-    submodules:
-    configurator: IPv4NetworkConfigurator {
-            parameters:
-                config = xml("<config><interface hosts='*' address='145.236.x.x' netmask='255.255.0.0'/></config>");
-                @display("p=140,50;i=block/cogwheel_s");
-        }
+  
+       
 }
