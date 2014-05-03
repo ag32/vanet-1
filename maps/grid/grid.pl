@@ -6,7 +6,7 @@ if($#ARGV + 1 == 0) {
 }
 $max_rows = 10;
 $max_cols = 10;
-$x_width = 50;
+$x_width = 150;
 $y_width = 50;
 
 $file_name = "hello";
