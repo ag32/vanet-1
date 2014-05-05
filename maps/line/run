@@ -1,0 +1,4 @@
+#!/bin/sh
+FILE="hello"
+perl line.pl $FILE
+netconvert --node-files=${FILE}.nod.xml --edge-files=${FILE}.edg.xml --output-file=${FILE}.net.xml
